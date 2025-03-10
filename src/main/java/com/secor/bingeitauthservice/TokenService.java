@@ -60,6 +60,18 @@ public class TokenService {
     }
 
 
+    public String getUsername(String token) {
+        String[] tokenArray = token.split(" ");
+        String tokenS = tokenArray[1];
 
-
+        if(tokenRepository.findById(tokenS).isPresent())
+        {
+            Token tokenObj = tokenRepository.findById(tokenS).get();
+            return tokenObj.getUsername();
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
